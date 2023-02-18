@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>circle</title>
+
+    <style>
+        body {
+            background-color: #050210;
+        }
+
+        .circle {
+            margin: 300px auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-image: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            position: relative;
+            z-index: 1;
+        }
+
+        .circle::before {
+            content: "";
+            width: 160px;
+            height: 160px;
+            background: #050210;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            top: 20px;
+            left: 20px;
+        }
+
+        .circle,
+        .circle::after {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-image: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            position: relative;
+            z-index: 1;
+            animation: rotate 2s linear infinite;
+        }
+
+        .circle::after {
+            content: "";
+            filter: blur(40px);
+            display: block;
+            position: relative;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+
+
+        .inside2 {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            top: 70px;
+            left: 70px;
+            position: absolute;
+            z-index: 3;
+            animation: insideAnimation 2s ease-out infinite;
+        }
+
+
+        .inside {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            top: 70px;
+            left: 70px;
+            position: absolute;
+            z-index: 3;
+            animation: insideAnimation 2s ease-out 1s infinite;
+        }
+
+        @keyframes insideAnimation {
+            0% {
+                transform: scale(0);
+                background-color: #5524a419;
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.7);
+                background-color: #2442a422;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="circle">
+        <div class="inside"></div>
+        <div class="inside2"></div>
+    </div>
+
+</body>
+
+</html>
